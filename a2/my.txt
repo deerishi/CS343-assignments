@@ -1,0 +1,36 @@
+18 players in the match
+  POTATO goes off after 8 tosses
+Set 1:	U -> 6 -> 15 -> 1 -> 7 -> 9 -> 11 -> 8 -> 9 is eliminated
+  POTATO goes off after 5 tosses
+Set 2:	U -> 8 -> 0 -> 8 -> 17 -> 7 is eliminated
+  POTATO goes off after 8 tosses
+Set 3:	U -> 8 -> 0 -> 17 -> 11 -> 16 -> 4 -> 14 -> 5 is eliminated
+  POTATO goes off after 4 tosses
+Set 4:	U -> 8 -> 13 -> 10 -> 11 is eliminated
+  POTATO goes off after 1 toss
+Set 5:	U -> 2 is eliminated
+  POTATO goes off after 5 tosses
+Set 6:	U -> 12 -> 1 -> 10 -> 15 -> 8 is eliminated
+  POTATO goes off after 1 toss
+Set 7:	U -> 13 is eliminated
+  POTATO goes off after 1 toss
+Set 8:	U -> 3 is eliminated
+  POTATO goes off after 8 tosses
+Set 9:	U -> 1 -> 16 -> 17 -> 12 -> 4 -> 0 -> 16 -> 12 is eliminated
+  POTATO goes off after 4 tosses
+Set 10:	U -> 4 -> 0 -> 10 -> 15 is eliminated
+  POTATO goes off after 5 tosses
+Set 11:	U -> 0 -> 14 -> 17 -> 16 -> 17 is eliminated
+  POTATO goes off after 2 tosses
+Set 12:	U -> 4 -> 6 is eliminated
+  POTATO goes off after 4 tosses
+Set 13:	U -> 0 -> 1 -> 4 -> 14 is eliminated
+  POTATO goes off after 4 tosses
+Set 14:	U -> 0 -> 4 -> 1 -> 0 is eliminated
+  POTATO goes off after 1 toss
+Set 15:	U -> 10 is eliminated
+  POTATO goes off after 2 tosses
+Set 16:	U -> 16 -> 1 is eliminated
+  POTATO goes off after 1 toss
+Set 17:	U -> 4 is eliminated
+16 wins the Match!

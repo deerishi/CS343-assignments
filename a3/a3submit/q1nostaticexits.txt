@@ -1,0 +1,45 @@
+Timing results for the experiments with no compiler optmization
+
+Modified nostaticexits 
+Using command line time ./nostaticexits 1000 100 100 100
+
+user	0m4.968s
+
+
+Original nostaticexits 
+Using command line time ./nostaticexits 1000 100 100 100
+
+
+user	0m2.546s
+
+
+------------------------------------------------------------------------
+
+
+Timing results for the experiments with  compiler optmization
+
+Modified nostaticexits 
+Using command line time ./nostaticexits 1000 100 100 100
+
+user	0m2.681s
+
+
+
+Original nostaticexits 
+Using command line time ./nostaticexits 1000 100 100 100
+
+
+user	0m0.532s
+
+------------------------------------------------------------------------
+
+Relative differences between timing results: 
+
+Static exits is thus much faster than a code with no static exits. This is because in the modified nostaticexits, we run the loops for all their iterations. Using compiler optimization did help a little in terms of time, but the original nostaticexits was much faster.
+
+
+--------------------------------------------------------------------------
+Performace difference when compiler optimization is used  :
+
+With static exits the compiler was able to optimize the code about 25 times faster. With no static exits the compiler was able to optimize the code only 2 times faster.
+Thus the compiler optimizes static exits much better than no static exits

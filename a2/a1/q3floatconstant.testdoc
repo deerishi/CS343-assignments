@@ -1,0 +1,73 @@
+Script started on Mon 26 Sep 2016 08:17:10 PM EDT
+drishi@ubuntu1404-012:~/cs343/a1$ cat a.txt
++1234567816.
++12.E-2
+-12.5
+12.
+-.5
+.1E+123
+-12.5F
+
+
+
+a
+b
+
+cvbd
++.
+ 12.0
+12.0  
+1.2.0a
+-12.5F
+123.ff
+0123456789.0123456E-0124
+drishi@ubuntu1404-012:~/cs343/a1$ ./floatconstant <a.txt 
+"+1234567816." : "+1234567816." yes
+"+12.E-2" : "+12.E-2" yes
+"-12.5" : "-12.5" yes
+"12." : "12." yes
+"-.5" : "-.5" yes
+".1E+123" : ".1E+123" yes
+"-12.5F" : "-12.5F" yes
+"" : Warning! Blank line.
+"" : Warning! Blank line.
+"" : Warning! Blank line.
+"a" : "a" no
+"b" : "b" no
+"" : Warning! Blank line.
+"cvbd" : "c" no -- extraneous characters "vbd"
+"+." : "+." no
+" 12.0" : " " no -- extraneous characters "12.0"
+"12.0  " : "12.0 " no -- extraneous characters " "
+"1.2.0a" : "1.2." no -- extraneous characters "0a"
+"-12.5F" : "-12.5F" yes
+"123.ff" : "123.ff" no
+"0123456789.0123456E-0124" : "0123456789.0123456" no -- extraneous characters "E-0124"
+drishi@ubuntu1404-012:~/cs343/a1$ ./floatconstant a.txt
+"+1234567816." : "+1234567816." yes
+"+12.E-2" : "+12.E-2" yes
+"-12.5" : "-12.5" yes
+"12." : "12." yes
+"-.5" : "-.5" yes
+".1E+123" : ".1E+123" yes
+"-12.5F" : "-12.5F" yes
+"" : Warning! Blank line.
+"" : Warning! Blank line.
+"" : Warning! Blank line.
+"a" : "a" no
+"b" : "b" no
+"" : Warning! Blank line.
+"cvbd" : "c" no -- extraneous characters "vbd"
+"+." : "+." no
+" 12.0" : " " no -- extraneous characters "12.0"
+"12.0  " : "12.0 " no -- extraneous characters " "
+"1.2.0a" : "1.2." no -- extraneous characters "0a"
+"-12.5F" : "-12.5F" yes
+"123.ff" : "123.ff" no
+"0123456789.0123456E-0124" : "0123456789.0123456" no -- extraneous characters "E-0124"
+drishi@ubuntu1404-012:~/cs343/a1$ ./floatconstant noFile.txt
+Error! Could not open input file "noFile.txt"
+drishi@ubuntu1404-012:~/cs343/a1$ exit
+exit
+
+Script done on Mon 26 Sep 2016 08:17:38 PM EDT

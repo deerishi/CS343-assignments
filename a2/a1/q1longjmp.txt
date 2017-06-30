@@ -1,0 +1,1 @@
+The longjmp code performed better than the throw catch because the compiler does not have to convert the throw catch statements by storeing the stack poiters , frame pointers e.t.c into the compiled code. The lonjmp does this explicitly thereby saving time.

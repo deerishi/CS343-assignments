@@ -1,0 +1,31 @@
+shared:10260358
+shared:10148324
+shared:10277049
+shared:10286167
+shared:10102272
+shared:10213272
+shared:10221398
+shared:10163256
+shared:10219141
+shared:10265847
+
+b) All runs would not have the same ouput since, it is a multi-threaded application and any thread can run/interuppted at any point , thus changing the value of the variable shared.
+
+c) The maximum value can be 20000000, and the minimum is 10000000.
+
+d) For the code run on uniprocessor the output is 
+
+shared:20000000
+shared:20000000
+shared:20000000
+shared:20000000
+shared:20000000
+shared:20000000
+shared:20000000
+shared:20000000
+shared:20000000
+shared:20000000
+
+The difference in values between the uniprocessor and multiprocessor output is that , on the uniprocessor the threads can run one after the another with no contention which is not the case for multiprocessor.
+
+

@@ -1,0 +1,4 @@
+The resumption program requires saving the state to signify the stack depth. To simulate exactly the same program in C++, it would require the use of global variables to know which  \_CatchResume to excute when an exception is resumed.
+
+In order to get the same output I had to write a part of the function code ( the first call to f) in Main in order to avoid the use of global variables. However, if the first execution of function f was not called from main then we would need global variables in case the exception was raised at the first call to f itself.
+

@@ -1,0 +1,78 @@
+Running the matrixmultiply with command line argruments : time ./matrixmultiply 1 5000 10000
+
+O/P
+real	0m3.318s
+user	0m3.101s
+sys	0m0.204s
+
+
+
+---------------------------------------------------------------------------------------------
+
+Running the matrixmultiply with command line argruments : time ./matrixmultiply 2 5000 10000
+
+O/P
+
+real	0m4.309s
+user	0m7.089s
+sys	0m0.444s
+
+
+---------------------------------------------------------------------------------------------
+
+Running the matrixmultiply with command line argruments : time ./matrixmultiply 4 5000 10000
+
+O/P
+
+
+real	0m4.948s
+user	0m16.726s
+sys	0m0.472s
+44s
+
+
+---------------------------------------------------------------------------------------------
+
+Running the matrixmultiply with command line argruments : time ./matrixmultiply 8 5000 10000
+
+O/P
+
+real	0m5.910s
+user	0m34.255s
+sys	0m0.751s
+
+---------------------------------------------------------------------------------------------
+
+Running the matrixmultiply with command line argruments : time ./matrixmultiply 16 5000 10000
+
+O/P
+real	0m6.183s
+user	1m6.446s
+sys	0m3.532s
+
+
+--------------------------------------------------------------------------------------------
+
+Conclusion 
+Since matrix multiply is a divide and conquer algorithm, all threads run independenly of each other.
+Significant speedup is produced by doing the matrix multiplicatio nconcurrently.
+
+For the case of "time ./matrixmultiply 1 5000 10000", sequential task creation gave a 'real' time of 
+5s , whereas the concurrent tasks algorithm gave a real time of 3.3s.
+
+For the case of "time ./matrixmultiply 2 5000 10000" , sequential task creation gave a 'real' time of 
+9s , whereas the concurrent tasks algorithm gave a real time of 4.2 s.
+
+For the case of "time ./matrixmultiply 4 5000 10000", sequential task creation gave a 'real' time of 
+39s , whereas the concurrent tasks algorithm gave a real time of 4.9s.
+
+For the case of "time ./matrixmultiply 8 5000 10000" , sequential task creation gave a 'real' time of 
+4m33s , whereas the concurrent tasks algorithm gave a real time of 5.9s.
+
+For the case of "time ./matrixmultiply 16 5000 10000", the runtime is even more significant. The sequential task creation gave a runtime of a couple of hours. Whereas the concurrent task creation gave a real time of only 6.1s.
+
+The difference between real time and user time is more prominent , as the number of rows increase. This is justified because in the case of more rows more CPU cores are being used to perform concurrent multiplications. 
+Also as expected both the user and real time increase as the number of rows are increased
+
+
+

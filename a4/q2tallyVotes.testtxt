@@ -1,0 +1,473 @@
+Testting documentation for A4Q2
+-------------------------------------------------------
+-------------------------------------------------------
+Different Synchronization locks for voting problem.
+
+USER INTERFACE TESTING
+The following is the scriptfix log of the validity argruments with the vote executable
+1.         drishi@ubuntu1404-006:~/cs343/a4$ ./vote -1
+2.         Usage: ./voteMC  Voters (> 0 & V mod G = 0, default 6)  Group (> 0 & odd, default 3)  Seed (> 0)
+3.         drishi@ubuntu1404-006:~/cs343/a4$ ./vote 1 2 3 4 5 6
+4.         Usage: ./voteMC  Voters (> 0 & V mod G = 0, default 6)  Group (> 0 & odd, default 3)  Seed (> 0)
+5.         drishi@ubuntu1404-006:~/cs343/a4$ ./vote 0 1 2
+6.         Usage: ./voteMC  Voters (> 0 & V mod G = 0, default 6)  Group (> 0 & odd, default 3)  Seed (> 0)
+7.         drishi@ubuntu1404-006:~/cs343/a4$ ./vote 1 2 0
+8.         Usage: ./voteMC  Voters (> 0 & V mod G = 0, default 6)  Group (> 0 & odd, default 3)  Seed (> 0)
+9.         drishi@ubuntu1404-006:~/cs343/a4$ ./vote 10 2 123
+10.         Usage: ./voteMC  Voters (> 0 & V mod G = 0, default 6)  Group (> 0 & odd, default 3)  Seed (> 0)
+11.         drishi@ubuntu1404-006:~/cs343/a4$ ./vote 10 3 12
+12.         Usage: ./voteMC  Voters (> 0 & V mod G = 0, default 6)  Group (> 0 & odd, default 3)  Seed (> 0)
+13.         drishi@ubuntu1404-006:~/cs343/a4$ ./vote "this is wrong type os data"
+14.         Usage: ./voteMC  Voters (> 0 & V mod G = 0, default 6)  Group (> 0 & odd, default 3)  Seed (> 0)
+15.         drishi@ubuntu1404-006:~/cs343/a4$ ./vote 1aqwe 12 34
+16.         Usage: ./voteMC  Voters (> 0 & V mod G = 0, default 6)  Group (> 0 & odd, default 3)  Seed (> 0)
+17.         drishi@ubuntu1404-006:~/cs343/a4$ ./vote 12 3 0
+18.         Usage: ./voteMC  Voters (> 0 & V mod G = 0, default 6)  Group (> 0 & odd, default 3)  Seed (> 0)
+19.         drishi@ubuntu1404-006:~/cs343/a4$ ./vote 12 0 3
+20.         Usage: ./voteMC  Voters (> 0 & V mod G = 0, default 6)  Group (> 0 & odd, default 3)  Seed (> 0)
+21.         drishi@ubuntu1404-006:~/cs343/a4$ ./vote 42 21 0
+22.         Usage: ./voteMC  Voters (> 0 & V mod G = 0, default 6)  Group (> 0 & odd, default 3)  Seed (> 0)
+23.         drishi@ubuntu1404-006:~/cs343/a4$ ./vote 45 -3 23
+24.         Usage: ./voteMC  Voters (> 0 & V mod G = 0, default 6)  Group (> 0 & odd, default 3)  Seed (> 0)
+25.         drishi@ubuntu1404-006:~/cs343/a4$ ./vote 4 1 -3
+26.         Usage: ./voteMC  Voters (> 0 & V mod G = 0, default 6)  Group (> 0 & odd, default 3)  Seed (> 0)
+27.         drishi@ubuntu1404-006:~/cs343/a4$ ./vote 5 1 4.3
+28.         Usage: ./voteMC  Voters (> 0 & V mod G = 0, default 6)  Group (> 0 & odd, default 3)  Seed (> 0)
+29.         drishi@ubuntu1404-006:~/cs343/a4$ ./vote 4 1 4.3
+30.         Usage: ./voteMC  Voters (> 0 & V mod G = 0, default 6)  Group (> 0 & odd, default 3)  Seed (> 0)
+31.         drishi@ubuntu1404-006:~/cs343/a4$ ./vote -0
+32.         Usage: ./voteMC  Voters (> 0 & V mod G = 0, default 6)  Group (> 0 & odd, default 3)  Seed (> 0)
+33.         drishi@ubuntu1404-006:~/cs343/a4$ ./vote 0
+34.         Usage: ./voteMC  Voters (> 0 & V mod G = 0, default 6)  Group (> 0 & odd, default 3)  Seed (> 0)
+35.         drishi@ubuntu1404-006:~/cs343/a4$ ./vote 4 2
+36.         Usage: ./voteMC  Voters (> 0 & V mod G = 0, default 6)  Group (> 0 & odd, default 3)  Seed (> 0)
+37.         drishi@ubuntu1404-006:~/cs343/a4$ ./vote 1.2
+38.         Usage: ./voteMC  Voters (> 0 & V mod G = 0, default 6)  Group (> 0 & odd, default 3)  Seed (> 0)
+39.         drishi@ubuntu1404-006:~/cs343/a4$ ./vote 2
+40.         Usage: ./voteMC  Voters (> 0 & V mod G = 0, default 6)  Group (> 0 & odd, default 3)  Seed (> 0)
+41.         drishi@ubuntu1404-006:~/cs343/a4$ ./vote 3
+42.         Usage: ./voteMC  Voters (> 0 & V mod G = 0, default 6)  Group (> 0 & odd, default 3)  Seed (> 0)
+43.         drishi@ubuntu1404-006:~/cs343/a4$ ./vote 5
+44.         Usage: ./voteMC  Voters (> 0 & V mod G = 0, default 6)  Group (> 0 & odd, default 3)  Seed (> 0)
+        drishi@ubuntu1404-006:~/cs343/a4$ exit
+------------------------------------------------------------------------------      
+Analysis of USER INTERFACE TESTING
+        The executable was tested with the following types of command line argruments
+                1) Lines 1,23,35 : Negative values for voters, groups and seed
+                2)Lines 5 7,17,19,33,31,21 : Zero value for voters, groups and seed
+                3)Lines 13 and 15 Non digit values for voters, groups and seeds
+                4)Lines 3,7,15 ,39 : Even values for groups
+                5) Lines 3,12,15,39,41 : Values such as voters%group!=0
+                6) Out of range values for voters, groups and seeds
+                7)Lines 27,29,35,37Decimal values for voters,groups and seeds
+                All tests passed in User Interface Testing
+--------------------------------------------------------
+ALGORITHM TESTING
+ TEST 1:
+  -------
+    DATA DESCRIPTION
+    No seed  specified, check whether the output generated each time is different. 
+    TESTING
+    Here is the script-fixed log of the testing performed with line numbers attached.               
+        1. drishi@ubuntu1404-006:~/cs343/a4$ ./vote 3 1 >out1.txt
+        2. drishi@ubuntu1404-006:~/cs343/a4$ ./vote 3 1 >out2.txt
+        3. drishi@ubuntu1404-006:~/cs343/a4$ ./vote 3 1 >out3.txt
+        4. drishi@ubuntu1404-006:~/cs343/a4$ diff out1.txt out2.txt
+        5. 3,6c3,5
+        6. < S	S	
+        7. < V s		
+        8. < C	V s	
+        9. < F s	...	...	
+        10. ---
+        11. > 	S	S	
+        12. > 	V s	
+        13. > 	C	V p
+        14. 8,11c7,10
+        15. < 		S	
+        16. < 		V s
+        17. < 		C	
+        18. < ...	...	F s	
+        19. ---
+        20. > ...	...	F p	
+        21. > V p		
+        22. > C		
+        23. > F p	...	...	
+--------------------------------
+Analysis
+--------------------------------
+Everytime different output is generated
+
+TEST 2:
+-------
+    DATA DESCRIPTION
+    ./vote complied with TYPE=MC 
+
+    TESTING
+    Here is the script-fixed log of the testing performed.    
+        Script started on Mon 07 Nov 2016 11:54:01 PM EST
+        drishi@ubuntu1make vote TYPE=MC
+        make: `vote' is up to date.
+        -------------------------------------------------------------------------------------
+        Test 2.1 :
+        This test checks a single voter with a single group. As expected the voter goes, casts the vote,completes and finishes. No BARGING/BLOCKING happens
+        drishi@ubuntu1404-004:~/cs343/a4$ ./vote 1 1 
+        Voter0	
+        =======	
+        S	
+        V s
+        C	
+        F s	
+        =================
+        All tours started
+        -------------------------------------------------------------------------------------
+        Test 2.2:
+        This test checks if the voters in a group are blocking accordingly or not. As expected 2 voters block ( and respectively unblock) and then the voting completes and finishes.
+        drishi@ubuntu1404-004:~/cs343/a4$ ./vote 3 3
+        Voter0	Voter1	Voter2	
+        =======	=======	=======	
+		        S	
+		        V p
+        S	S	B 1
+        V s		
+        B 2	V p	
+	        C	U 1
+        ...	F p	...	
+        U 0		
+        ...	...	F p	
+        F s	...	...	
+        =================
+        All tours started
+        -------------------------------------------------------------------------------------
+        Test 2.3:
+        This test checks if any deadlock occurs with a large number of voters or not. Also it checks what happens if each voter is its own group. As expected each voter starts->votes->completes->finishes. No Barging/Blocking happens. There are 9 complete states as expected.
+
+        drishi@ubuntu1404-004:~/cs343/a4$ ./vote 9 1 103
+        Voter0	Voter1	Voter2	Voter3	Voter4	Voter5	Voter6	Voter7	Voter8	
+        =======	=======	=======	=======	=======	=======	=======	=======	=======	
+						        S		
+						        V p		
+				        S		C	S	
+        ...	...	...	...	...	...	F p	...	...	
+							        V p	
+				        V s			C	
+				        C				
+        ...	...	...	...	...	...	...	F p	...	
+        ...	...	...	...	F s	...	...	...	...	
+        S		S						
+        V s								
+        C		V p						
+		        C						
+        F s	...	...	...	...	...	...	...	...	
+	        S							
+        ...	...	F p	...	...	...	...	...	...	
+	        V s							
+	        C							
+        ...	F s	...	...	...	...	...	...	...	
+					        S			
+					        V p			
+					        C			
+        ...	...	...	...	...	F p	...	...	...	
+			        S					
+			        V s					
+			        C					
+        ...	...	...	F s	...	...	...	...	...	
+								        S	
+								        V p
+								        C	
+        ...	...	...	...	...	...	...	...	F p	
+        =================
+        All tours started
+        -------------------------------------------------------------------------------------
+        Test 2.4: 
+        This test checks if any deadlock occurs with a large number of voters or not. Also it checks if the blocking of tasks occurs correctly or not given a large size of group. As expected tasks block 8 times (and respectively unblock) before completing once and finishing. 
+        drishi@ubuntu1404-004:~/cs343/a4$ ./vote 9 9
+        Voter0	Voter1	Voter2	Voter3	Voter4	Voter5	Voter6	Voter7	Voter8	
+        =======	=======	=======	=======	=======	=======	=======	=======	=======	
+						        S		
+						        V p		
+				        S		B 1	S	
+							        V p	
+				        V s			B 2	
+        S		S		B 3				
+        V s								
+        B 4		V p						
+	        S	B 5						
+	        V s							
+	        B 6				S			
+					        V p			
+			        S		B 7			
+			        V s					
+			        B 8					S	
+								        V p
+						        U 7		C	
+        ...	...	...	...	...	...	...	...	F p	
+							        U 6	
+        ...	...	...	...	...	...	F p	...	...	
+				        U 5				
+        ...	...	...	...	...	...	...	F p	...	
+        U 4								
+        ...	...	...	...	F s	...	...	...	...	
+		        U 3						
+        F s	...	...	...	...	...	...	...	...	
+	        U 2							
+        ...	...	F p	...	...	...	...	...	...	
+					        U 1			
+        ...	F s	...	...	...	...	...	...	...	
+			        U 0					
+        ...	...	...	...	...	F p	...	...	...	
+        ...	...	...	F s	...	...	...	...	...	
+        =================
+        All tours started
+        -------------------------------------------------------------------------------------
+        Test 2.5: This test checks if any deadlock occurs with a large number of voters or not. Also it checks if the blocking of tasks occurs correctly or not given a small size of group. As expected the tasks block (and then respectively unblock in groups of 2 ) before completing and finishing. 
+        drishi@ubuntu1404-004:~/cs343/a4$ ./vote 9 3 103
+        Voter0	Voter1	Voter2	Voter3	Voter4	Voter5	Voter6	Voter7	Voter8	
+        =======	=======	=======	=======	=======	=======	=======	=======	=======	
+						        S		
+						        V p		
+				        S		B 1	S	
+							        V p	
+				        V s			B 2	
+				        C		U 1		
+        ...	...	...	...	F s	...	...	...	...	
+							        U 0	
+        ...	...	...	...	...	...	F p	...	...	
+        ...	...	...	...	...	...	...	F p	...	
+        S		S						
+        V s								
+        B 1		V p						
+	        S	B 2						
+	        V s							
+        U 1	C							
+        ...	F s	...	...	...	...	...	...	...	
+		        U 0			S			
+        F s	...	...	...	...	...	...	...	...	
+					        V p			
+					        B 1			
+        ...	...	F p	...	...	...	...	...	...	
+			        S					
+			        V s					
+			        B 2					S	
+								        V p
+					        U 1			C	
+        ...	...	...	...	...	...	...	...	F p	
+			        U 0					
+        ...	...	...	...	...	F p	...	...	...	
+        ...	...	...	F s	...	...	...	...	...	
+        =================
+        All tours started
+        ------------------------------------------------------------------------------------------------        
+        Test 2.6:
+        This test checks if the code is correctly blocking barging tasks. As expected it is.
+        drishi@ubuntu1404-004:~/cs343/a4$./vote 6 3 16219
+        Voter0	Voter1	Voter2	Voter3	Voter4	Voter5	
+        =======	=======	=======	=======	=======	=======	
+				        S	
+				        V p	
+			        S	B 1	
+			        V p		
+        S			B 2		S	
+        V s					
+        C				U 1	
+        F s	...	...	...	...	...	
+		        S			b	
+        ...	...	...	...	F p	...	
+	        S	b	U 0		
+        ...	...	...	F p	...	...	
+					        V s
+	        b	V s			B 1
+	        V p	B 2			
+	        C				U 1
+        ...	F p	...	...	...	...	
+		        U 0			
+        ...	...	...	...	...	F s	
+        ...	...	F s	...	...	...	
+        =================
+        All tours started
+------------------------------------------------------------------------------------------------
+Test 3: 
+------
+        DATA DESCRIPTION
+        ./vote complied with TYPE=SEM 
+        TESTING
+        Here is the script-fixed log of the testing performed.  
+        Due to lack of space. I am only showing 2 outputs , the rest of the outputs are similar to the other test cases shown previously. This solution has been coded with only binary semaphores and prevents barging.
+        Script started on Tue 08 Nov 2016 01:10:07 AM EST
+
+        Test 3.1:
+        The purpise of this test is 2 fold.  It checks if the Semaphore solution correctly blocks the other tasks in a group while they vote. This can be seen as the 2 group of tasks block twice (2 times) and respectively unblock before finishing. Again the complete state is printed only twice.
+        drishi@ubuntu1404-012:~/cs343/a4$ ./vote 6 3 16219
+        Voter0	Voter1	Voter2	Voter3	Voter4	Voter5	
+        =======	=======	=======	=======	=======	=======	
+				        S	
+				        V p	
+			        S	B 1	
+			        V p		
+        S			B 2		S	
+        V s					
+        C				U 1	b	
+        F s	...	...	...	...	...	
+		        S	U 0		
+        ...	...	...	...	F p	...	
+					        V s
+					        B 1
+        ...	...	...	F p	...	...	
+	        S	V s			
+	        V p	B 2			
+	        C				U 1
+        ...	F p	...	...	...	...	
+		        U 0			
+        ...	...	...	...	...	F s	
+        ...	...	F s	...	...	...	
+        =================
+        All tours started
+        ------------------------------------------------------------------------------------------------
+
+        Test 3.2 :
+        This test checks if any deadlock occurs with a large number of voters or not. Also it checks if the blocking of tasks occurs correctly or not given a large size of group. As expected tasks block 8 times (and respectively unblock) before completing once and finishing. Also Complete state is printed only once.
+        drishi@ubuntu1404-012:~/cs343/a4$ ./vote 9 9 103
+        Voter0	Voter1	Voter2	Voter3	Voter4	Voter5	Voter6	Voter7	Voter8	
+        =======	=======	=======	=======	=======	=======	=======	=======	=======	
+						        S		
+						        V p		
+				        S		B 1	S	
+							        V p	
+				        V s			B 2	
+        S		S		B 3				
+        V s								
+        B 4		V p						
+	        S	B 5						
+	        V s							
+	        B 6				S			
+					        V p			
+			        S		B 7			
+			        V s					
+			        B 8					S	
+								        V p
+						        U 7		C	
+        ...	...	...	...	...	...	...	...	F p	
+							        U 6	
+        ...	...	...	...	...	...	F p	...	...	
+				        U 5				
+        ...	...	...	...	...	...	...	F p	...	
+        U 4								
+        ...	...	...	...	F s	...	...	...	...	
+	------------------------------------------------------------------------------------------------
+Test 3: 
+------
+        DATA DESCRIPTION
+        ./vote complied with TYPE=SEM 
+        TESTING
+        Here is the script-fixed log of the testing performed.  
+        Due to lack of space. I am only showing 2 outputs , the rest of the outputs are similar to the other test cases shown previously. This solution has been coded with only	        U 3						
+        F s	...	...	...	...	...	...	...	...	
+	        U 2							
+        ...	...	F p	...	...	...	...	...	...	
+					        U 1			
+        ...	F s	...	...	...	...	...	...	...	
+			        U 0					
+        ...	...	...	...	...	F p	...	...	...	
+        ...	...	...	F s	...	...	...	...	...	
+        =================
+        All tours started
+        drishi@ubuntu1404-012:~/cs343/a4$ exit
+        exit
+
+        Script done on Tue 08 Nov 2016 01:11:58 AM EST
+        --------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------
+Test 4: 
+------
+        DATA DESCRIPTION
+        ./vote complied with TYPE=BAR 
+        TESTING
+        Here is the script-fixed log of the testing performed.  
+        Due to lack of space. I am only showing 3 outputs , the rest of the outputs are similar to the other test cases shown previously with TYPE=MC, with the difference that no barging state is printed. This solution has been coded with only 1 uBarrier Lock.
+        
+                Script started on Tue 08 Nov 2016 01:23:10 AM EST
+
+        Test 4.1: 
+        The purpose of this test is to check how the barrier behaves when there is only one voter. Here the output is slightly diiferent because of the barrier implementation which unblocks tasks after the last task has executed.
+        drishi@ubuntu1404-012:~/cs343/a4$ ./vote 1 1
+        Voter0	
+        =======	
+        S	
+        V s
+        C	
+        U 0
+        F s	
+        =================
+        All tours started
+        --------------------------------------------------------------------------------
+        Test 4.2: 
+        This test shows that the Barrier implementation has no barging. The rest of the output is as expected : Each group blocks twice (and unblocks) before completing and finishing.
+        drishi@ubuntu1404-012:~/cs343/a4$ ./vote 6 3 16219
+        Voter0	Voter1	Voter2	Voter3	Voter4	Voter5	
+        =======	=======	=======	=======	=======	=======	
+				        S	
+				        V p	
+			        S	B 1	
+			        V p		
+        S			B 2		S	
+        V s					
+        C					
+        U 2			U 1		
+        F s	...	...	...	...	...	
+		        S		U 0	
+        ...	...	...	F p	...	...	
+					        V s
+					        B 1
+        ...	...	...	...	F p	...	
+	        S	V s			
+	        V p	B 2			
+	        C				
+	        U 2	U 1			
+        ...	F p	...	...	...	...	
+					        U 0
+        ...	...	F s	...	...	...	
+        ...	...	...	...	...	F s	
+        =================
+        All tours started
+        --------------------------------------------------------------------------------
+        Test 4.3: 
+        This test shows that the Barrier implementation blocks 8 tasks before finding  the winner and printing out the finished tasks.
+        The group tasks block 8 times and unblock 8 times before completing once and finishing.
+        drishi@ubuntu1404-012:~/cs343/a4$ ./vote 9 9 103
+        Voter0	Voter1	Voter2	Voter3	Voter4	Voter5	Voter6	Voter7	Voter8	
+        =======	=======	=======	=======	=======	=======	=======	=======	=======	
+						        S		
+						        V p		
+				        S		B 1	S	
+							        V p	
+				        V s			B 2	
+        S		S		B 3				
+        V s								
+        B 4		V p						
+	        S	B 5						
+	        V s							
+	        B 6				S			
+					        V p			
+			        S		B 7			
+			        V s					
+			        B 8					S	
+								        V p
+								        C	
+			        U 7					U 8
+        ...	...	...	...	...	...	...	...	F p	
+					        U 6			
+        ...	...	...	F s	...	...	...	...	...	
+	        U 5							
+        ...	...	...	...	...	F p	...	...	...	
+		        U 4						
+        ...	F s	...	...	...	...	...	...	...	
+        U 3								
+        ...	...	F p	...	...	...	...	...	...	
+				        U 2				
+        F s	...	...	...	...	...	...	...	...	
+							        U 1	
+        ...	...	...	...	F s	...	...	...	...	
+						        U 0		
+        ...	...	...	...	...	...	...	F p	...	
+        ...	...	...	...	...	...	F p	...	...	
+        =================
+        All tours started

@@ -1,0 +1,72 @@
+i)Busy Wait with no multi and optimization
+
+Command : time ./buffer 50 55 10000 30 10
+O/P
+total: -1544692296
+
+real	0m1.663s
+user	0m1.645s
+sys	0m0.016s
+
+
+
+****************
+
+Busy Wait with  optimization
+
+Command : time ./buffer 50 55 10000 30 10
+
+O/P
+total: -1544692296
+
+real	0m1.450s
+user	0m1.429s
+sys	0m0.016s 
+
+
+
+
+-------------------------------------------------
+
+ii) The  busy wait performed better than  busy wait both with and without compiler optimization in the case of uniprocessor. This is because with the no vuy wait in uniprocessor , there were instances when the processor was simply idle and there could have been a lag 
+between the time when the processor had a task running before returning from idle state.
+---------------------------------------------------------
+iii)Busy Wait with  optimization
+
+Command : time ./buffer 50 55 10000 30 10
+
+O/P
+total: -1544692296
+
+real	0m1.450s
+user	0m1.429s
+sys	0m0.016s 
+
+
+---------------------------------------------------------
+iv) Busy Wait with  multi flag and no optimization
+Command : time ./buffer 50 55 10000 30 10
+O/P
+total: -1544713033
+
+real	0m14.699s
+user	0m58.505s
+sys	0m0.144s
+
+
+->No Busy Wait with  optimization
+
+
+
+O/P
+total: -1544692296
+
+real	0m14.295s
+user	0m56.899s
+sys	0m0.140s
+
+-------------------------------------------------------------
+v) In this case multi processor with busy wait took less time because the processors was able to process different tasks rather than repeatedly spinning and doing nothing.
+
+vi) In the uniprocessor case it took more time  as there were instances when the processors were wasting time by spinning.
+
